@@ -83,7 +83,7 @@ public class ModifyPackageInformationsService {
 		if(form.getLength()!=0) cmd.setLength(form.getLength());
 		if(form.getWidth()!=0) cmd.setWidth(form.getWidth());
 		if(form.getHeight()!=0) cmd.setHeight(form.getHeight());
-		
+		if(form.getSenderName()!=null) cmd.setSenderName(form.getSenderName());
 		cmdHistRepo.save(cmd);
 		
 		JSONObject res = new JSONObject();

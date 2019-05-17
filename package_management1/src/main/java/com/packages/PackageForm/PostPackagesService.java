@@ -28,6 +28,7 @@ public class PostPackagesService {
 	public String postPackage(RegisterPackage form,String token) throws IOException, JSONException {
 		if(form.getEmailSender()==null || form.getNamePackage()==null || form.getKilograms()==0 || form.getPhoneNumberReceiver()==null ||
 				form.getPhoneNumberSender()==null || form.getReceiverAdress()==null || form.getSenderAdress()==null ||
+				form.getSenderName()==null || form.getReceiverName()==null ||
 				form.getHeight()==0 || form.getWidth()==0 || form.getLength()==0) throw new UnknownMatchException("Invalid data");
 	
 		BufferedReader reader = null ;
