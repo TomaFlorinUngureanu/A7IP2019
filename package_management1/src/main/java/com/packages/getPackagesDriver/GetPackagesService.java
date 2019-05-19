@@ -27,7 +27,7 @@ public class GetPackagesService {
 	public List<PackagesDriverHistory> getPackages(String location,String token) throws IOException {
 		
 		BufferedReader reader1 = null ;
-		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+location);
+		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+location.replace(" ","+"));
 	    HttpURLConnection con1 = (HttpURLConnection) url1.openConnection();
 	    
 	    con1.setRequestMethod("GET");

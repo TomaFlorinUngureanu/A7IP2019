@@ -18,7 +18,7 @@ public class Payments {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name="id")
+    @Column(name="id")
 	private int id;
 	@Column(name="charge_id")
 	private String chargeId;

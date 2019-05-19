@@ -32,7 +32,7 @@ public class PostPackagesService {
 				form.getHeight()==0 || form.getWidth()==0 || form.getLength()==0) throw new UnknownMatchException("Invalid data");
 	
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/verifyLocation/"+form.getSenderAdress());
+		URL url = new URL("http://localhost:8297/trip/verifyLocation/"+form.getSenderAdress().replace(" ","+"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");
@@ -47,7 +47,7 @@ public class PostPackagesService {
 		if(!adresaValida)  throw new UnknownMatchException("Sender address is not valid");
 		
 		BufferedReader reader1 = null ;
-		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+form.getReceiverAdress());
+		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+form.getReceiverAdress().replace(" ","+"));
 	    HttpURLConnection con1 = (HttpURLConnection) url1.openConnection();
 	    
 	    con1.setRequestMethod("GET");

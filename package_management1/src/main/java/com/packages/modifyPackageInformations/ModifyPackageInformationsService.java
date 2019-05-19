@@ -40,7 +40,7 @@ public class ModifyPackageInformationsService {
 		if(form.getSenderAdress()!=null)
 			{
 			BufferedReader reader = null ;
-			URL url = new URL("http://localhost:8297/trip/verifyLocation/"+form.getSenderAdress());
+			URL url = new URL("http://localhost:8297/trip/verifyLocation/"+form.getSenderAdress().replace(" ","+"));
 		    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		    
 		    con.setRequestMethod("GET");
@@ -59,7 +59,7 @@ public class ModifyPackageInformationsService {
 		if(form.getReceiverAdress()!=null) {
 			
 			BufferedReader reader1 = null ;
-			URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+form.getReceiverAdress());
+			URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+form.getReceiverAdress().replace(" ","+"));
 		    HttpURLConnection con1 = (HttpURLConnection) url1.openConnection();
 		    
 		    con1.setRequestMethod("GET");
