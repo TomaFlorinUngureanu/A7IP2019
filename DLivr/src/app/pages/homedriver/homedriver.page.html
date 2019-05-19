@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>HOME - DRIVER</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <!--create a element for map. #Map - identifier -->
+    <div #Map class="map"></div>
+
+  <ion-card color="dark">
+    <ion-label color="primary" style="padding-left: 20px;">Start Point Information</ion-label>
+    <ion-item>
+      <ion-label color="light">
+        Pickup Address
+        <p>Strada Mugurelui Uscat</p>
+      </ion-label>
+      <ion-icon name="pin" color="primary" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item>
+        <ion-label color="light">
+          Phone Number Package Sender
+          <p>0743335564</p>
+        </ion-label>
+        <ion-icon name="call" color="primary" slot="start"></ion-icon>
+      </ion-item>
+
+
+
+    <ion-label color="secondary" style="padding-left: 20px;">End Point Information</ion-label>
+    <ion-item>
+      <ion-label color="light">
+        Deliver Address
+        <p>Strada Mugurelui Umed</p>
+      </ion-label >
+      <ion-icon name="pin" color="secondary" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item>
+        <ion-label color="light">
+          Package Receiver's Name
+          <p>Marian Vanghelie</p>
+        </ion-label>
+        <ion-icon name="person" color="secondary" slot="start"></ion-icon>
+      </ion-item>
+
+    <ion-item>
+        <ion-label color="light">
+          Phone Number Package Receiver
+          <p>0743335564</p>
+        </ion-label>
+        <ion-icon name="call" color="secondary" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-label color="warning" style="padding-left: 20px;">Package Details</ion-label>
+    <ion-item>
+        <ion-label color="light">
+        <p> Kilograms: 12</p>
+        <p> Length: 12</p>
+        <p> Width: 12</p>
+        <p> Height: 1 </p>
+      
+      </ion-label>
+          
+        <ion-icon name="information-circle" color="warning" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-label color="tertiary" style="padding-left: 20px;">Delivery Details</ion-label>
+    <ion-item>
+        <ion-label color="light">
+        <p> Distance: 12 km.</p>
+        <p> Estimated payment: 34.5$</p>
+      </ion-label>
+          
+        <ion-icon name="navigate" color="tertiary" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-button style="margin-top: 10px;" id = "register" size="medium"  color = "success" expand="full" routerLink = "#">ACCEPT PACKAGE</ion-button>
+  
+  </ion-card>
+    
+</ion-content>
+

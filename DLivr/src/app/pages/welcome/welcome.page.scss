@@ -1,0 +1,71 @@
+
+#registerButton {
+    float:right;
+    --color: gray;
+    font-weight: 400;
+    --color-activated: white;
+}
+
+#loginButton {
+    float:right;
+
+    font-weight: 500;
+    --border-radius: 2px;
+    width: 100px;
+    --opacity: 75%;
+    --padding-left:40px;
+    --padding-right:10px;
+    align-self: center;
+}
+
+#createAccountButton {
+    font-weight: 500;
+    --border-radius: 2px;
+    --padding-left:20px;
+    --padding-right:20px;
+    align-self: center;
+}
+
+#title {
+    text-align: center;
+    color: dodgerblue;
+    font-weight: bolder;
+    padding: 25px 0px 10px 0px;
+}
+
+#subtitle {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+    font-size: 16px;
+    padding: 0px 20px 20px 20px;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    color: gray;
+    font-weight: 300px;
+    font-size: 12px;
+}
+#dlivr {
+    float:left;
+    width:40%;
+    height: 50px;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+
+ion-toolbar {
+    --ion-background-color:  rgb(53, 53, 53);
+    height: 50px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    ion-title {
+      padding-right: 15%;
+    }
+  }
