@@ -35,7 +35,7 @@ public class PackageService {
 		float distance;
 		
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/getDistance/"+address1+"/"+address2);
+		URL url = new URL("http://localhost:8297/trip/getDistance/"+address1.replace(" ","+")+"/"+address2.replace(" ","+"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");

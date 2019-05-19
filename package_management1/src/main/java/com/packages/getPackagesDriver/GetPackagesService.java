@@ -48,7 +48,7 @@ public class GetPackagesService {
 		if(i.getStatus().equals("Ready")) continue;
 		if(i.getEmailDriver().equals(JwtUser.getUserName())) continue;
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/getDistance/"+location+"/"+i.getSenderAdress());
+		URL url = new URL("http://localhost:8297/trip/getDistance/"+location.replace(" ","+")+"/"+i.getSenderAdress().replace(" ","+"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");
