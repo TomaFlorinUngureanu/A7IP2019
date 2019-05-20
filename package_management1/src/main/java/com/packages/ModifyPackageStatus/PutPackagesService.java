@@ -28,7 +28,7 @@ public class PutPackagesService {
 		PackagesSenderHistory cmd= new PackagesSenderHistory();
 		cmd=cmdHistRepo.findById(form.getId()).get();
 		
-		if(cmd.getEmailSender().equals(JwtUser.getUserName())) throw new UnknownMatchException("You can't seend a package to yourself");
+		//if(cmd.getEmailSender().equals(JwtUser.getUserName())) throw new UnknownMatchException("You can't seend a package to yourself");
 		
 		
 		if(cmd.getEmailDriver()==null && form.getStatus().equals("Accepted")) {
@@ -48,7 +48,7 @@ public class PutPackagesService {
 				if(!cmdHistRepo.existsByPin(form.getPin())) throw new UnknownMatchException("The given pin doesn't exists");
 				
 				packageByPin=cmdHistRepo.findByPin(form.getPin()).get();
-				if(!packageByPin.getEmailDriver().equals(JwtUser.getUserName())) 
+				if(!packageByPin.getEmailDriver().equals(JwtUser.getUserName()) && packageByPin.getId()!=form.getId()) 
 					throw new UnknownMatchException("The given pin isn't correct");	
 				   else cmd.setStatus(form.getStatus());
 			}

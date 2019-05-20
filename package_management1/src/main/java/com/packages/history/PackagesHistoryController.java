@@ -24,7 +24,7 @@ public class PackagesHistoryController {
 		 return ResponseEntity.ok(packagesHistoryService.gePackagesHistoryDriver());
 	 }
 	 
-	 @RequestMapping("/packages/getPackagesSender}")
+	 @RequestMapping("/packages/getPackagesSender")
 	 public ResponseEntity<List<PackagesSenderHistory>> getPackagesHistorySender()  {
 		 return ResponseEntity.ok(packagesHistoryService.gePackagesHistorySender());
 	 }
