@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,7 +49,7 @@ public class GetPackagesService {
 		if(i.getStatus().equals("Ready")) continue;
 		if(i.getEmailDriver().equals(JwtUser.getUserName())) continue;
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/getDistance/"+location.replace(" ","+")+"/"+i.getSenderAdress().replace(" ","+"));
+		URL url = new URL("http://localhost:8297/trip/getDistance/"+URLEncoder.encode(location,"UTF-8")+"/"+URLEncoder.encode(i.getSenderAdress(),"UTF-8"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");

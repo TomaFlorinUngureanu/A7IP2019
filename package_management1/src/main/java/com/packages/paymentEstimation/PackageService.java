@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class PackageService {
 		float distance;
 		
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/getDistance/"+address1.replace(" ","+")+"/"+address2.replace(" ","+"));
+		URL url = new URL("http://localhost:8297/trip/getDistance/"+URLEncoder.encode(address1,"UTF-8")+"/"+URLEncoder.encode(address2,"UTF-8"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");

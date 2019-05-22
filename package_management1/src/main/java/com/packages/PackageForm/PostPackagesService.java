@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.stream.Collectors;
 
 import org.json.JSONException;
@@ -32,7 +33,7 @@ public class PostPackagesService {
 				form.getHeight()==0 || form.getWidth()==0 || form.getLength()==0) throw new UnknownMatchException("Invalid data");
 	
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/verifyLocation/"+form.getSenderAdress().replace(" ","+"));
+		URL url = new URL("http://localhost:8297/trip/verifyLocation/"+URLEncoder.encode(form.getSenderAdress(),"UTF-8"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");
@@ -47,7 +48,7 @@ public class PostPackagesService {
 		if(!adresaValida)  throw new UnknownMatchException("Sender address is not valid");
 		
 		BufferedReader reader1 = null ;
-		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+form.getReceiverAdress().replace(" ","+"));
+		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+URLEncoder.encode(form.getReceiverAdress(),"UTF-8"));
 	    HttpURLConnection con1 = (HttpURLConnection) url1.openConnection();
 	    
 	    con1.setRequestMethod("GET");

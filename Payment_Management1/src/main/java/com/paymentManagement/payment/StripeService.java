@@ -11,6 +11,7 @@ import com.stripe.model.Charge;
 import com.stripe.model.Token;
 import com.stripe.model.Transfer;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -53,9 +54,14 @@ public class StripeService {
         Map<String, Object> tokenParams = new HashMap<String, Object>();
         Map<String, Object> accountParams = new HashMap<String, Object>();
         accountParams.put("type", "custom");
-        accountParams.put("requested_capabilities", null);
+        accountParams.put("country", "US");
+        accountParams.put("business_type", "company");
+        accountParams.put("requested_capabilities", Arrays.asList("card_payments"));
         Account.create(accountParams);
         tokenParams.put("account", accountParams);
+        
+        Stripe.apiKey = "sk_test_yFbrSFbItspR2o3qw3J3bi1i00TJTbo5wo";
+        
         
     	Map<String, Object> transferParams = new HashMap<String, Object>();
     	transferParams.put("amount", 400);
