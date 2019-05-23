@@ -23,16 +23,16 @@ public class ResetPasswordService {
 	
 	
 	public void send(String to, String subject, String body,String newPassword) throws MessagingException {
-		if(!userRepository.existsById(to)) throw new UnknownMatchException ("Invalid email address");
-		{
-		    Users user=new Users();
-			user.setPassword(newPassword);
-			user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-			user.setEmail(to);
-			userRepository.save(user);
+		//if(!userRepository.existsById(to)) throw new UnknownMatchException ("Invalid email address");
+		
+		   // Users user=new Users();
+			//user.setPassword(newPassword);
+			//user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+			//user.setEmail(to);
+			//userRepository.save(user);
 			
 			
-		}
+		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		

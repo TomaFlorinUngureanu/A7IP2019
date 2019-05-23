@@ -15,9 +15,8 @@ public class LoginController {
 	LoginService usersService;
 	
 	 @RequestMapping(method=RequestMethod.POST,value="/login")
-	 @ResponseBody
-	 public ResponseEntity<String> setUsersObj(@RequestBody Users users) {
-		 return ResponseEntity.ok(usersService.setUsersObj(users));
+	 public String setUsersObj(@RequestBody Users users) {
+		 return (usersService.setUsersObj(users));
 	 }	 
 	
 }
