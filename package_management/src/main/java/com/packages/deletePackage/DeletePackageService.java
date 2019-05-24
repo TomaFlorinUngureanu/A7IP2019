@@ -19,7 +19,7 @@ public class DeletePackageService {
 	public String deletePackage(int id) throws JSONException {
 
 		if (!cmdRepo.existsById(id))
-			throw new UnknownMatchException("The package with the given id doen't exists");
+			throw new UnknownMatchException("The package with the given id doesn't exists");
 
 		PackagesSenderHistory cmd = new PackagesSenderHistory();
 		cmd = cmdRepo.findById(id).get();
