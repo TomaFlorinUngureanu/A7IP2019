@@ -1,6 +1,9 @@
 package com.accountManagement.register;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -13,7 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import com.accountManagement.exceptions.UnknownMatchException;
-import com.accountManagement.login.JwtGenerator;
 import com.accountManagement.model.RegisterDetails;
 import com.accountManagement.repositories.ProfilesDriverRepository;
 import com.accountManagement.repositories.ProfilesSenderRepository;
