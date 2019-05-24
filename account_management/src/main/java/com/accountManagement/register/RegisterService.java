@@ -57,7 +57,8 @@ public class RegisterService {
 			ProfilesSender senderProfile = new ProfilesSender(newUser.getEmail(),newUser.getName(),newUser.getPhone_number()
 					,newUser.getCountry() ,null,null,null,null,null);
 			ProfilesDriver driverProfile = new ProfilesDriver(newUser.getEmail(),newUser.getName(),newUser.getPhone_number(),newUser.getCountry());
-				profilesSenderRepository.save(senderProfile);
+				
+			    profilesSenderRepository.save(senderProfile);
 				profilesDriverRepository.save(driverProfile);
 				usersRepository.save(user);
 
