@@ -47,8 +47,6 @@ class RegisterServiceTest {
 		registerRequest.setPhone_number("0749731484");
 		registerRequest.setName("CostelBiju");
 		
-		registerService = new RegisterService();
-
 		MockitoAnnotations.initMocks(this);
 	}
 
@@ -58,6 +56,7 @@ class RegisterServiceTest {
 	void testIsPasswordStrong() {
 		assertTrue(registerService.isPasswordStrong(registerRequest));
 	}
+	
 	@Test
 	@DisplayName("password is not strong")
 	void testIsNotPasswordStrong() {
@@ -65,9 +64,15 @@ class RegisterServiceTest {
 		notSecurePassword.setPassword("123");
 		assertFalse(registerService.isPasswordStrong(notSecurePassword));
 	}
+	
 	@Test
-	@DisplayName("Add an user")
-	void testAddUser() {
+	@DisplayName("Add user with invalid data from body request")
+	void testAddUser_invalidBody() {
+		
+		when(usersRepository.existsById(anyString())).thenReturn(true);
+		when(profilesSenderRepository.existsById(anyString())).thenReturn(true);
+		when(profilesDriverRepository.existsById(anyString())).thenReturn(true);
+		
 		RegisterDetails notSecurePassword =registerRequest;
 		RegisterDetails nullName =registerRequest;
 		RegisterDetails nullEmail =registerRequest;
@@ -78,9 +83,6 @@ class RegisterServiceTest {
 		nullEmail.setEmail(null);
 		nullPhoneNumber.setPhone_number(null);
 		nullCountry.setCountry(null);
-		when(usersRepository.existsById(anyString())).thenReturn(false);
-		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
-		when(profilesDriverRepository.existsById(anyString())).thenReturn(false);
 		
 		assertAll(
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(notSecurePassword)),
@@ -89,6 +91,37 @@ class RegisterServiceTest {
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(nullPhoneNumber)),
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(nullCountry))
 		);
+	}
+	
+	@Test
+	@DisplayName("Add user with invalid email for userRepository")
+	void testAddUser_invalidLoginDataTableEmail() {
+		
+		when(usersRepository.existsById(anyString())).thenReturn(true);
+		
+		assertThrows(UnknownMatchException.class,() ->registerService.addUser(registerRequest));
+	}
+	
+	@Test
+	@DisplayName("Add user with invalid email for driverRepository")
+	void testAddUser_invalidEmailDriver() {
+		
+		when(usersRepository.existsById(anyString())).thenReturn(false);
+		when(profilesDriverRepository.existsById(anyString())).thenReturn(true);
+		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
+	
+		
+		assertThrows(UnknownMatchException.class, () ->registerService.addUser(registerRequest));
+	}
+		
+	@Test
+	@DisplayName("Add user with invalid email for senderRepository")
+	void testAddUser_invalidEmailSender() {
+		
+		when(usersRepository.existsById(anyString())).thenReturn(false);
+		when(profilesSenderRepository.existsById(anyString())).thenReturn(true);
+		
+		assertThrows(UnknownMatchException.class, () ->registerService.addUser(registerRequest));
 	}
 
 }
