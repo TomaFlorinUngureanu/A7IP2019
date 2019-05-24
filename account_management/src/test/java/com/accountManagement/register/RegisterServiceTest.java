@@ -78,9 +78,10 @@ class RegisterServiceTest {
 		nullEmail.setEmail(null);
 		nullPhoneNumber.setPhone_number(null);
 		nullCountry.setCountry(null);
-		when(usersRepository.existsById(anyString())).thenReturn(false);
-		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
-		when(profilesDriverRepository.existsById(anyString())).thenReturn(false);
+		
+		when(usersRepository.existsById(anyString())).thenReturn(true);
+		when(profilesSenderRepository.existsById(anyString())).thenReturn(true);
+		when(profilesDriverRepository.existsById(anyString())).thenReturn(true);
 		
 		assertAll(
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(notSecurePassword)),
