@@ -19,8 +19,6 @@ import com.accountManagement.repositories.UsersRepository;
 
 import net.minidev.json.JSONObject;
 
-//@ExtendWith(SpringExtension.class)
-//@SpringBootTest
 class LoginServiceTest {
 
 	private Users userRepository, userRequest;

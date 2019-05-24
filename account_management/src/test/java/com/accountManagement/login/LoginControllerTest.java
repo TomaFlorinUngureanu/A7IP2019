@@ -41,10 +41,7 @@ import com.google.gson.Gson;
 import net.minidev.json.JSONObject;
 
 @ExtendWith(SpringExtension.class)
-//@WebMvcTest(LoginController.class)
-//@ExtendWith(SpringExtension.class)
 @WebAppConfiguration()
-//@AutoConfigureMockMvc
 class LoginControllerTest {
 
 	private final String uri="/login";
@@ -52,15 +49,9 @@ class LoginControllerTest {
 	Users user;
 	
     private MockMvc mvc;
-    
-    //@Autowired
-   // private WebApplicationContext wac;
    
 	@Mock
 	private LoginService loginService;
-	
-	//@Mock
-    //private JwtGenerator jwtGenerator;
 	
 	@InjectMocks
 	private LoginController loginController;
@@ -75,21 +66,11 @@ class LoginControllerTest {
 		mvc = MockMvcBuilders
                 .standaloneSetup(loginController)
                 .build();
-
-		//this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
 
 	@Test
 	@DisplayName("login controller")
 	void testSetUsersObj() throws Exception {
-		
-
-		//jwtGenerator=new JwtGenerator();
-
-		
-	      
-		
-
 			
 			when(loginService.setUsersObj(user)).thenReturn("Success");
 			
@@ -100,8 +81,6 @@ class LoginControllerTest {
 		                .contentType(MediaType.APPLICATION_JSON)
 		                .content(mapper.writeValueAsString(user)))
 		                .andReturn().getResponse();
-			 
-			 System.out.println(response.getContentAsString()+ "|||");
 			 
 			 assertEquals(response.getStatus(),HttpStatus.OK.value());
 		    // assertTrue(response.getContentAsString().equals("Success"));
