@@ -22,8 +22,6 @@ import com.accountManagement.repositories.UsersRepository;
 class RegisterServiceTest {
 
 	@Mock
-	JwtGenerator jwtGenerator;
-	@Mock
 	private UsersRepository usersRepository;
 	@Mock
 	private ProfilesSenderRepository profilesSenderRepository;
@@ -80,6 +78,10 @@ class RegisterServiceTest {
 		nullEmail.setEmail(null);
 		nullPhoneNumber.setPhone_number(null);
 		nullCountry.setCountry(null);
+		when(usersRepository.existsById(anyString())).thenReturn(false);
+		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
+		when(profilesDriverRepository.existsById(anyString())).thenReturn(false);
+		
 		assertAll(
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(notSecurePassword)),
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(nullName)),
@@ -87,10 +89,6 @@ class RegisterServiceTest {
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(nullPhoneNumber)),
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(nullCountry))
 		);
-		when(usersRepository.existsById(anyString())).thenReturn(false);
-		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
-		when(profilesDriverRepository.existsById(anyString())).thenReturn(false);
-		
 	}
 
 }
