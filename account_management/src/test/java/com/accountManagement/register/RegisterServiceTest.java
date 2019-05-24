@@ -83,6 +83,7 @@ class RegisterServiceTest {
 		nullEmail.setEmail(null);
 		nullPhoneNumber.setPhone_number(null);
 		nullCountry.setCountry(null);
+
 		
 		assertAll(
 		() ->assertThrows(UnknownMatchException.class, () -> registerService.addUser(notSecurePassword)),
