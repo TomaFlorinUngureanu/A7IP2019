@@ -8,6 +8,8 @@ public class RegisterDetails {
 	String country;
 	String name;
 	
+	public RegisterDetails() {}
+	
 	public RegisterDetails(String email,String password,String phone_number,String country,String name)
 	{
 		this.email=email;

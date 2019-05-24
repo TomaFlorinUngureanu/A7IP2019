@@ -18,8 +18,8 @@ public class RegisterController
 	
 	
 	@PostMapping("/register")
-	public ResponseEntity<String> registerUser(@RequestBody RegisterDetails user)
+	public String registerUser(@RequestBody RegisterDetails user)
 	{
-	 return ResponseEntity.ok(userLoginDataService.addUser(user));
+	 return userLoginDataService.addUser(user);
 	}
 }
