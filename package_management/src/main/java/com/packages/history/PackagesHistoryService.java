@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.packages.exceptions.UnknownMatchException;
 import com.packages.model.JwtUser;
-import com.packages.model.JwtUserDetails;
 import com.packages.model.PackagesDriverHistory;
 import com.packages.model.PackagesSenderHistory;
 import com.packages.repositories.CommandsHistoryRepository;
