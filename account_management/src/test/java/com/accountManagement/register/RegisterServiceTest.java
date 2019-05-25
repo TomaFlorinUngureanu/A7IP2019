@@ -112,8 +112,6 @@ class RegisterServiceTest {
 		when(usersRepository.existsById(anyString())).thenReturn(false);
 		when(profilesDriverRepository.existsById(anyString())).thenReturn(true);
 		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
-	
-		
 		assertThrows(UnknownMatchException.class, () ->registerService.addUser(registerRequest));
 	}
 		

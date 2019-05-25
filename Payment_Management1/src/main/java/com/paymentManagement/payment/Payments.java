@@ -75,5 +75,13 @@ public class Payments {
 	public void setBalanceTransactionId(String balance_transaction_id) {
 		this.balanceTransactionId = balance_transaction_id;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 }

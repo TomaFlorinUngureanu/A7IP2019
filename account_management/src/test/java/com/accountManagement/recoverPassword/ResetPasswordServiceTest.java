@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.accountManagement.exceptions.UnknownMatchException;
+import com.accountManagement.model.Users;
 import com.accountManagement.repositories.UsersRepository;
 
 class ResetPasswordServiceTest {
