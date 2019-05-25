@@ -5,7 +5,7 @@ package com.packages.model;
 public class JwtUser {
     private static String userName;
 
-    public void setUserName(String username) {
+    public static void setUserName(String username) {
         userName = username;
     }
 

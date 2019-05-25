@@ -9,7 +9,7 @@ public class JwtUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 	private  String userName;
-    private  String token;
+    private static  String token;
 
     public JwtUserDetails(String userName, String token) {
 
@@ -57,7 +57,7 @@ public class JwtUserDetails implements UserDetails {
         return userName;
     }
 
-    public String getToken() {
+    public static String getToken() {
         return token;
     }
 
