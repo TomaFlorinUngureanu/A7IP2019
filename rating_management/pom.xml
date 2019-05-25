@@ -19,9 +19,15 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter</artifactId>
+		<exclusions>
+			<exclusion>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-core</artifactId>	
+			</exclusion>
+		</exclusions>
 		</dependency>
 
 		<dependency>
@@ -60,6 +66,11 @@
     		<artifactId>junit-jupiter-api</artifactId>
     		<scope>test</scope>
 		</dependency>
+		    <dependency>
+             <groupId>org.junit.jupiter</groupId>
+             <artifactId>junit-jupiter-engine</artifactId>
+             <scope>test</scope>
+         </dependency>
 		<dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
@@ -75,7 +86,19 @@
 			<version>2.3</version>
 			<scope>compile</scope>
 		</dependency>
+				<dependency>
+      		<groupId>io.rest-assured</groupId>
+     		 <artifactId>rest-assured</artifactId>
+      		<version>4.0.0</version>
+      		<scope>test</scope>
+		</dependency>
+		<dependency>
+     		 <groupId>io.rest-assured</groupId>
+     		 <artifactId>json-path</artifactId>
+     		 <version>4.0.0</version>
+		</dependency>
 	</dependencies>
+	
 
 	<build>
 		<plugins>

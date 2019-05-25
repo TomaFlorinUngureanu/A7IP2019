@@ -13,7 +13,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import com.accountManagement.exceptions.UnknownMatchException;
-import com.accountManagement.login.JwtGenerator;
 import com.accountManagement.model.RegisterDetails;
 import com.accountManagement.repositories.ProfilesDriverRepository;
 import com.accountManagement.repositories.ProfilesSenderRepository;
@@ -110,8 +109,6 @@ class RegisterServiceTest {
 		when(usersRepository.existsById(anyString())).thenReturn(false);
 		when(profilesDriverRepository.existsById(anyString())).thenReturn(true);
 		when(profilesSenderRepository.existsById(anyString())).thenReturn(false);
-	
-		
 		assertThrows(UnknownMatchException.class, () ->registerService.addUser(registerRequest));
 	}
 		

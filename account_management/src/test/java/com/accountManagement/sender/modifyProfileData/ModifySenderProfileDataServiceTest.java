@@ -44,7 +44,6 @@ class ModifySenderProfileDataServiceTest {
 		changedProfile.setAddress3("addr3");
 		changedProfile.setAddress4("addr4");
 		changedProfile.setAddress5("addr5");
-
 		MockitoAnnotations.initMocks(this);
 	}
 
