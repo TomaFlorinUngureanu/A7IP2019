@@ -12,18 +12,19 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.accountManagement.exceptions.UnknownMatchException;
+<<<<<<< HEAD
 import com.accountManagement.model.Users;
+=======
+>>>>>>> db0d91d7628722afd7e16e2bccb113ddbed86d79
 import com.accountManagement.repositories.UsersRepository;
 
 class ResetPasswordServiceTest {
 
 	@Mock
 	UsersRepository usersRepository;
-	
+
 	@InjectMocks
 	ResetPasswordService resetPasswordService;
-
-
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -40,16 +41,16 @@ class ResetPasswordServiceTest {
 		when(usersRepository.existsById(anyString())).thenReturn(true);
 
 	}
-	
+
 	@Test
 	@DisplayName("login with invalid email")
 	void testSend_invalidEmai() {
-		
+
 		when(usersRepository.existsById(anyString())).thenReturn(false);
-		
-		assertThrows(UnknownMatchException.class, () -> resetPasswordService.send("invalid-email@gmail.com","subject","body","newpassword"));
-		
+
+		assertThrows(UnknownMatchException.class,
+				() -> resetPasswordService.send("invalid-email@gmail.com", "subject", "body", "newpassword"));
+
 	}
-	
 
 }
