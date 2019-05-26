@@ -14,7 +14,6 @@ public class LoginService {
 
 	@Autowired
 	private UsersRepository usersRepository;
-	
 	JwtGenerator jwtGenerator;
 
 	public LoginService(JwtGenerator jwtGenerator) {

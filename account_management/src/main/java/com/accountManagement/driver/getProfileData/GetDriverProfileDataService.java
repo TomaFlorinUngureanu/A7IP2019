@@ -16,9 +16,9 @@ public class GetDriverProfileDataService {
 	private ProfilesDriverRepository profilesRepository;
 	
 
-	public ProfilesDriver getProfile() throws UnknownMatchException {
+	public ProfilesDriver getProfile(String email) throws UnknownMatchException {
 		
-		if(!profilesRepository.existsById(JwtUser.getUserName())) throw new UnknownMatchException("Invalid email address");
+		if(!profilesRepository.existsById(email)) throw new UnknownMatchException("Invalid driver email address");
 	
 		return profilesRepository.findById(JwtUser.getUserName()).get();
 	}

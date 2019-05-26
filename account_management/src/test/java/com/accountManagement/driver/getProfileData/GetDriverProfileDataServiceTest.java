@@ -49,7 +49,7 @@ private Optional <ProfilesDriver> driver2;
 	@DisplayName("Profile Exists Id")
 	void getProfileTest() {
 		when(repo.existsById(anyString())).thenReturn(false);
-		assertThrows(UnknownMatchException.class, () -> service.getProfile());
+		assertThrows(UnknownMatchException.class, () -> service.getProfile(anyString()));
 
 	}
 	
@@ -58,6 +58,6 @@ private Optional <ProfilesDriver> driver2;
 	void getProfileTest_Return() {
 		when(repo.existsById(anyString())).thenReturn(true);
 		when(repo.findById(anyString())).thenReturn(driver2);
-		assertEquals(service.getProfile().getEmail(),"alexandru@gmail.com");
+		assertEquals(service.getProfile(anyString()).getEmail(),"alexandru@gmail.com");
 	}
 }

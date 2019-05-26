@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rating.model.RatingForm;
 
-@CrossOrigin("http://localhost:4200")
+
 @RestController
 public class SetRatingController {
 	@Autowired

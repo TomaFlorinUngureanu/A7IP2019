@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rating.model.RatingForm;
 import com.rating.setRating.SetRatingService;
 
-@CrossOrigin("http://localhost:4200")
+
 @RestController
 public class RatingDriverController {
 	@Autowired

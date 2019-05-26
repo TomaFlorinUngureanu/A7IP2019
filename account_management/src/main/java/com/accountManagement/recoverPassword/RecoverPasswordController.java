@@ -13,7 +13,7 @@ import com.accountManagement.model.Users;
 
 import java.util.Random;
 
-@CrossOrigin("http://localhost:4200")
+
 @RestController
 public class RecoverPasswordController {
 	
@@ -30,7 +30,7 @@ public class RecoverPasswordController {
 		int high = 15;
 		int result = r.nextInt(high-low) + low;
 		password=newPassword.generatePassword(result);
-		smtpMailSender.send(email, "Your iUber password", "Your password is:  "+password ,password);		
+		smtpMailSender.send(email, "Your iUber password", "Ypur password is:  "+password ,password);		
 		
 		
 	}

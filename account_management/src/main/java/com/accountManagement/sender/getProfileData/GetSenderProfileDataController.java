@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accountManagement.model.ProfilesSender;
 
-
-
-
-@CrossOrigin("http://localhost:4200")
 @RestController
 public class GetSenderProfileDataController {
 	@Autowired

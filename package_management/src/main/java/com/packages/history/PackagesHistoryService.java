@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.packages.exceptions.UnknownMatchException;
 import com.packages.model.JwtUser;
+import com.packages.model.JwtUserDetails;
 import com.packages.model.PackagesDriverHistory;
 import com.packages.model.PackagesSenderHistory;
 import com.packages.repositories.CommandsHistoryRepository;
@@ -45,14 +46,14 @@ public class PackagesHistoryService {
 		
 		return cmd;
 	}
-
+	
 	public List<PackagesDriverHistory> getPackagesNotDeliveredDriver() {
 		if(!cmdHistRepo.existsByEmailDriver(JwtUser.getUserName())) throw new UnknownMatchException("You don't have any package accepted or in delivery");
 		List<PackagesDriverHistory> list=new ArrayList<PackagesDriverHistory>();
 		List<PackagesSenderHistory> packages=new ArrayList<PackagesSenderHistory>();
 		packages=cmdHistRepo.findAllByEmailDriver(JwtUser.getUserName());
 		for(PackagesSenderHistory i : packages) {
-			if(!i.getStatus().equals("Accepted") || !i.getStatus().equals("In Delivery")) continue;
+			if(!i.getStatus().equals("Accepted")) continue;
 			list.add(new PackagesDriverHistory(i));
 		}
 		return list;

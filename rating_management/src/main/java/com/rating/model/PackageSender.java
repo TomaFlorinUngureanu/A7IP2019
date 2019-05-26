@@ -9,8 +9,6 @@ public class PackageSender {
 		this.emailSender = emailSender;
 		this.status = status;
 	}
-	public PackageSender() {
-	}
 	int id;
 	String emailDriver;
 	String emailSender;
