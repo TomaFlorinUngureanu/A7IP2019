@@ -1,35 +1,40 @@
 package com.tripManagement.adresses;
 
-import static org.junit.Assert.*;
-///import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.Before;
+import java.io.IOException;
+
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.web.WebAppConfiguration;
 
-//import io.restassured.RestAssured;
-//import io.restassured.response.Response;
-
+@ExtendWith(SpringExtension.class)
+@WebAppConfiguration()
 public class LocationServiceTest {
 	
-	private final String CONTEXT_PATH = "/trip/getLocation/";	 
-	@Before
+	private String loc;
+	
+    @Autowired
+	//@Mock
+    LocationService service;
+    
+	@BeforeEach
 	public void setUp() throws Exception {
-		//RestAssured.baseURI="http://localhost";
-		//RestAssured.port=8761;
-	}
+		
+		loc = "Iasi";
+		//MockitoAnnotations.initMocks(this);
+
+			}
 
 	@Test
-	public void getLocationtest() {
-		/*Response response = 
-		given().contentType("application/json")
-		.accept("application/json")
-		.body(null)
-		.when().post(CONTEXT_PATH + "/")
-		.then()
-		.statusCode(200)
-		.contentType("application/json")
-		.extract()
-		.response();*/
+	public void getLocationtest() throws IOException {
+		assertNotNull(service.verifyLocation(loc));
 	}
+		
 
 }

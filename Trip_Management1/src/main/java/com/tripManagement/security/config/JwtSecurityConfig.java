@@ -1,5 +1,7 @@
 package com.tripManagement.security.config;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +22,8 @@ import com.tripManagement.security.JwtAuthenticationProvider;
 import com.tripManagement.security.JwtAuthenticationTokenFilter;
 import com.tripManagement.security.JwtSuccessHandler;
 
-import java.util.Collections;
 
-
+@SuppressWarnings("deprecation")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 @Configuration

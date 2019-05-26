@@ -17,7 +17,6 @@ import org.mockito.MockitoAnnotations;
 
 import com.accountManagement.exceptions.UnknownMatchException;
 import com.accountManagement.model.JwtUser;
-import com.accountManagement.model.ProfilesDriver;
 import com.accountManagement.model.ProfilesSender;
 import com.accountManagement.repositories.ProfilesSenderRepository;
 

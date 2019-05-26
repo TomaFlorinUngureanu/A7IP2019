@@ -1,8 +1,7 @@
-package com.accountManagement.modifyDriverProfileDataControllerTests;
+package com.accountManagement.sender.modifyProfileData;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -20,56 +19,58 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.accountManagement.driver.modifyProfileData.ModifyDriverProfileDataController;
-import com.accountManagement.driver.modifyProfileData.ModifyDriverProfileDataService;
-import com.accountManagement.login.LoginController;
-import com.accountManagement.login.LoginService;
 import com.accountManagement.model.ChangedProfiles;
-import com.accountManagement.model.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.minidev.json.JSONObject;
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration()
-public class ModifyDriverProfileDataControllerTests {
-	private final String uri="/accountManagement/modifyProfileInformation/driver";
+class ModifySenderProfileDataControllerTest {
 
+private final String uri = "/accountManagement/modifyProfileInformation/sender";
 	
     private MockMvc mvc;
     
     ChangedProfiles profile;
-   
-	@Mock
-	private ModifyDriverProfileDataService service;
+    
+    JSONObject json;
 
+	@Mock
+	private  ModifySenderProfileDataService service;
 	
 	@InjectMocks
-	private ModifyDriverProfileDataController controller;
+	private ModifySenderProfileDataController controller;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		
-		profile = new ChangedProfiles("email","name","12345" , "Romania", "adress1",
-			"adress2", "adress3", "adress4", "adress5");
-		
+		profile = new ChangedProfiles();
+		profile.setName("Gigel");
+		profile.setPhone_number("0753683821");
+		profile.setCountry("Polonia");;
+		 json = new JSONObject();
+		json.put("message", "Success");
+
 		MockitoAnnotations.initMocks(this);
 		
 		mvc = MockMvcBuilders
                 .standaloneSetup(controller)
                 .build();
 	}
-	
+
 	@Test
-	@DisplayName("modifyDriver controller")
-	void changeProfileData_Test_Return_Succes() throws Exception 
+	@DisplayName("modifySender controller") 
+	public void changeProfileData_Test_Return_Succes() throws Exception
 	{
-		ObjectMapper mapper = new ObjectMapper();
-		when(service.changeProfileDataObj(profile)).thenReturn("succes");
+		when(service.changeProfileDataObj(profile)).thenReturn(json.toString());
 		
+		ObjectMapper mapper = new ObjectMapper();
 		mvc.perform(put(uri)
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content(mapper.writeValueAsString(profile)))
 		.andExpect(status().isOk());
-		
+				
 		verify(service).changeProfileDataObj(ArgumentMatchers.refEq(profile));
 	}
+
 }

@@ -22,9 +22,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.accountManagement.driver.getProfileData.GetDriverProfileDataController;
-import com.accountManagement.driver.getProfileData.GetDriverProfileDataService;
-import com.accountManagement.model.ProfilesDriver;
 import com.accountManagement.model.ProfilesSender;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
