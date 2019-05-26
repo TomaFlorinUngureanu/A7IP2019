@@ -16,6 +16,9 @@ import com.rating.security.JwtAuthenticationEntryPoint;
 import com.rating.security.JwtAuthenticationProvider;
 import com.rating.security.JwtAuthenticationTokenFilter;
 import com.rating.security.JwtSuccessHandler;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Collections;
 
@@ -43,6 +46,16 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+            }
+        };
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

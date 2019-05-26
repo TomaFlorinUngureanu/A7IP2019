@@ -11,14 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.packages.security.JwtAuthenticationEntryPoint;
 import com.packages.security.JwtAuthenticationProvider;
 import com.packages.security.JwtAuthenticationTokenFilter;
 import com.packages.security.JwtSuccessHandler;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Collections;
 
@@ -45,7 +45,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setAuthenticationSuccessHandler(new JwtSuccessHandler());
         return filter;
     }
-    
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
@@ -56,6 +56,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
             }
         };
     }
+
 
 
     @Override

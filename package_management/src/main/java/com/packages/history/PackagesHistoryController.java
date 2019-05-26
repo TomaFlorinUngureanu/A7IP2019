@@ -13,7 +13,7 @@ import com.packages.model.PackagesDriverHistory;
 import com.packages.model.PackagesSenderHistory;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+
 public class PackagesHistoryController {
 	
 	@Autowired

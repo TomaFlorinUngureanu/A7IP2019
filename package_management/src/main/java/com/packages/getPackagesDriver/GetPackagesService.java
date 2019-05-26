@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class GetPackagesService {
 	public List<PackagesDriverHistory> getPackages(String location,String token) throws IOException {
 		
 		BufferedReader reader1 = null ;
-		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+location.replace(" ","+"));
+		URL url1 = new URL("http://localhost:8297/trip/verifyLocation/"+ URLEncoder.encode(location, "UTF-8"));
 	    HttpURLConnection con1 = (HttpURLConnection) url1.openConnection();
 	    
 	    con1.setRequestMethod("GET");
@@ -48,7 +49,7 @@ public class GetPackagesService {
 		if(!i.getStatus().equals("Ready")) continue;
 		if(i.getEmailSender().equals(JwtUser.getUserName())) continue;
 		BufferedReader reader = null ;
-		URL url = new URL("http://localhost:8297/trip/getDistance/"+URLEncoder.encode(location,"UTF-8")+"/"+URLEncoder.encode(i.getSenderAdress(),"UTF-8"));
+		URL url = new URL("http://localhost:8297/trip/getDistance/"+URLEncoder.encode(location, "UTF-8")+"/"+URLEncoder.encode(i.getSenderAdress(), "UTF-8"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	    
 	    con.setRequestMethod("GET");

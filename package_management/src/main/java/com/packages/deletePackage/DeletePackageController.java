@@ -10,16 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
-@CrossOrigin("http://localhost:4200")
+
 public class DeletePackageController {
 
 	@Autowired
 	DeletePackageService deleteServ;
+	
+	 @RequestMapping(method=RequestMethod.DELETE,value="/packages/deletePackage/{id}")
+	 public String postSenderPackage(@PathVariable int id) throws IOException, JSONException {
+		 return deleteServ.deletePackage(id);
+	 }
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/packages/deletePackage/{id}")
-	public String postSenderPackage(@PathVariable int id) throws IOException, JSONException {
-		return deleteServ.deletePackage(id);
-	}
-
+	
 }
