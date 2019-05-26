@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Trip_Management
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: mandr
+Implementation-Vendor-Id: com.tripManagement
+Build-Jdk: 1.8.0_201
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/Trip_Management
+Created-By: Maven Integration for Eclipse
+
