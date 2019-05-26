@@ -46,7 +46,7 @@ public class GetPackagesService {
 		cmd=commandsHistoryRepository.findAll();
 	   for(PackagesSenderHistory i:cmd) {
 		if(!i.getStatus().equals("Ready")) continue;
-		//if(i.getEmailDriver().equals(JwtUser.getUserName())) continue;
+		if(i.getEmailSender().equals(JwtUser.getUserName())) continue;
 		BufferedReader reader = null ;
 		URL url = new URL("http://localhost:8297/trip/getDistance/"+URLEncoder.encode(location,"UTF-8")+"/"+URLEncoder.encode(i.getSenderAdress(),"UTF-8"));
 	    HttpURLConnection con = (HttpURLConnection) url.openConnection();

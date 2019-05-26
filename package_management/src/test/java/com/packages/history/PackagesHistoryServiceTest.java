@@ -46,7 +46,7 @@ class PackagesHistoryServiceTest {
 		packageSH.setReceiverName("Auras");
 		packageSH.setSenderAdress("adresaSender");
 		packageSH.setSenderName("Stegarul");
-		packageSH.setStatus("Activ");
+		packageSH.setStatus("Delivered");
 		packageSH.setWidth(40);
 		
 		packageDH.setId(1);

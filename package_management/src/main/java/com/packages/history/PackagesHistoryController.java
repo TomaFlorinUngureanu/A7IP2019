@@ -19,9 +19,14 @@ public class PackagesHistoryController {
 	@Autowired
 	private PackagesHistoryService packagesHistoryService;
 	
-	 @RequestMapping("/packages/getPackagesDriver")
+	 @RequestMapping("/packages/getPackagesHistoryDriver")
 	 public ResponseEntity<List<PackagesDriverHistory>> getPackagesHistoryDriver()  {
 		 return ResponseEntity.ok(packagesHistoryService.gePackagesHistoryDriver());
+	 }
+	 
+	 @RequestMapping("/packages/getPackagesNotDeliveredDriver")
+	 public ResponseEntity<List<PackagesDriverHistory>> getPackagesNotDeliveredDriver()  {
+		 return ResponseEntity.ok(packagesHistoryService.getPackagesNotDeliveredDriver());
 	 }
 	 
 	 @RequestMapping("/packages/getPackagesSender")

@@ -24,6 +24,7 @@ public class PackagesHistoryService {
 		List<PackagesSenderHistory> packages=new ArrayList<PackagesSenderHistory>();
 		packages=cmdHistRepo.findAllByEmailDriver(JwtUser.getUserName());
 		for(PackagesSenderHistory i : packages) {
+			if(!i.getStatus().equals("Delivered")) continue;
 			list.add(new PackagesDriverHistory(i));
 		}
 		return list;
@@ -43,6 +44,18 @@ public class PackagesHistoryService {
 		cmd=cmdHistRepo.findById(id).get();
 		
 		return cmd;
+	}
+
+	public List<PackagesDriverHistory> getPackagesNotDeliveredDriver() {
+		if(!cmdHistRepo.existsByEmailDriver(JwtUser.getUserName())) throw new UnknownMatchException("You don't have any package accepted or in delivery");
+		List<PackagesDriverHistory> list=new ArrayList<PackagesDriverHistory>();
+		List<PackagesSenderHistory> packages=new ArrayList<PackagesSenderHistory>();
+		packages=cmdHistRepo.findAllByEmailDriver(JwtUser.getUserName());
+		for(PackagesSenderHistory i : packages) {
+			if(!i.getStatus().equals("Accepted") || !i.getStatus().equals("In Delivery")) continue;
+			list.add(new PackagesDriverHistory(i));
+		}
+		return list;
 	}
 
 }
